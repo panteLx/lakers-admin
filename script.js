@@ -56,7 +56,9 @@ function createVehicleDetailsTag(vehicle, index) {
     vehicle.id
   }" data-index="${index}" />
     ${createInputField("Fahrzeugname", "name", index, vehicle.Fahrzeugname)}
-    ${createInputField("PicURL", "picurl", index, vehicle.PicURL)}
+    ${decodeURIComponent(
+      createInputField("PicURL", "picurl", index, vehicle.PicURL)
+    )}
     ${createInputField("PS", "ps", index, vehicle.PS, "number")}
     ${createInputField(
       "Kilometerstand",
@@ -151,7 +153,9 @@ document
   .addEventListener("click", async function () {
     vehicles.forEach((vehicle, index) => {
       vehicle.Fahrzeugname = document.getElementById(`name-${index}`).value;
-      vehicle.PicURL = document.getElementById(`picurl-${index}`).value;
+      vehicle.PicURL = encodeURIComponent(
+        document.getElementById(`picurl-${index}`).value
+      );
       vehicle.PS = parseInt(document.getElementById(`ps-${index}`).value, 10);
       vehicle.Kilometerstand = parseInt(
         document.getElementById(`km-${index}`).value,
@@ -182,7 +186,7 @@ document
     const newVehicle = {
       id: generateUniqueId(), // Einzigartige ID für jedes neue Fahrzeug
       Fahrzeugname: document.getElementById("newName").value,
-      PicURL: document.getElementById("newPicURL").value,
+      PicURL: encodeURIComponent(document.getElementById("newPicURL").value),
       PS: parseInt(document.getElementById("newPS").value, 10),
       Kilometerstand: parseInt(
         document.getElementById("newKilometerstand").value,
