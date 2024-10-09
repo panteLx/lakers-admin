@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fahrzeug Infos</title>
-    <link rel="stylesheet" href="styles.css?v=1" />
+    <link rel="stylesheet" href="styles.css?v=1.1" />
   </head>
   <body>
     <div id="toast" class="toast"></div>
@@ -26,14 +26,7 @@
           placeholder="Kilometerstand"
           required
         />
-        <select id="newTuned">
-          <option value="true">Tuned: Ja</option>
-          <option value="false">Tuned: Nein</option>
-        </select>
-        <select id="newZustand">
-          <option value="Neuwagen">Neuwagen</option>
-          <option value="Gebrauchtwagen">Gebrauchtwagen</option>
-        </select>
+
         <input
           type="number"
           id="newKofferraumvolumen"
@@ -41,10 +34,24 @@
           required
         />
         <input type="number" id="newPreis" placeholder="Preis in €" required />
+        <div class="select-wrapper">
+          <div class="select-container">
+            <select id="newTuned">
+              <option value="true">Tuned: Ja</option>
+              <option value="false">Tuned: Nein</option>
+            </select>
+          </div>
+          <div class="select-container">
+            <select id="newZustand">
+              <option value="Neuwagen">Neuwagen</option>
+              <option value="Gebrauchtwagen">Gebrauchtwagen</option>
+            </select>
+          </div>
+        </div>
         <button type="submit">Fahrzeug hinzufügen</button>
       </form>
     </div>
 
-    <script src="script.js?v=1.1.1"></script>
+    <script src="script.js?v=1.1.2"></script>
   </body>
 </html>

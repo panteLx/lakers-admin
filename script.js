@@ -67,6 +67,16 @@ function createVehicleDetailsTag(vehicle, index) {
       vehicle.Kilometerstand,
       "number"
     )}
+
+    ${createInputField(
+      "Kofferraumvolumen",
+      "kofferraumvolumen",
+      index,
+      vehicle.Kofferraumvolumen,
+      "number"
+    )}
+    ${createInputField("Preis", "preis", index, vehicle.Preis, "number")}
+    <div class="select-wrapper">
     ${createSelectField(
       "Tuned",
       "tuned",
@@ -77,6 +87,7 @@ function createVehicleDetailsTag(vehicle, index) {
       ],
       vehicle.Tuned
     )}
+        
     ${createSelectField(
       "Zustand",
       "zustand",
@@ -87,14 +98,7 @@ function createVehicleDetailsTag(vehicle, index) {
       ],
       vehicle.Zustand ? "Neuwagen" : "Gebrauchtwagen"
     )}
-    ${createInputField(
-      "Kofferraumvolumen",
-      "kofferraumvolumen",
-      index,
-      vehicle.Kofferraumvolumen,
-      "number"
-    )}
-    ${createInputField("Preis", "preis", index, vehicle.Preis, "number")}
+    </div>
     <button type="button" class="delete-button" data-index="${index}">Löschen</button>
   `;
 
@@ -123,10 +127,12 @@ function createSelectField(label, type, index, options, selectedValue) {
     .join("");
 
   return `
+    <div class="select-container">
     <label for="${type}-${index}">${label}:</label>
     <select id="${type}-${index}" data-index="${index}">
       ${optionsHtml}
     </select>
+    </div>
   `;
 }
 
@@ -240,7 +246,7 @@ async function updateVehiclesOnAPI(successMessage) {
 
 // Funktion zur Generierung einer einzigartigen ID
 function generateUniqueId() {
-  return "vehicle-" + Date.now();
+  return Date.now();
 }
 
 // Funktion zum Anzeigen von Toast-Nachrichten
