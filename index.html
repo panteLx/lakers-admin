@@ -18,6 +18,7 @@
       <h2>Neues Fahrzeug hinzufügen</h2>
       <form id="newVehicleForm">
         <input type="text" id="newName" placeholder="Fahrzeugname" required />
+        <input type="text" id="newPicURL" placeholder="Bild-URL" required />
         <input type="number" id="newPS" placeholder="PS" required />
         <input
           type="number"
@@ -33,6 +34,12 @@
           <option value="Neuwagen">Neuwagen</option>
           <option value="Gebrauchtwagen">Gebrauchtwagen</option>
         </select>
+        <input
+          type="number"
+          id="newKofferraumvolumen"
+          placeholder="Kofferraumvolumen"
+          required
+        />
         <input type="number" id="newPreis" placeholder="Preis in €" required />
         <button type="submit">Fahrzeug hinzufügen</button>
       </form>

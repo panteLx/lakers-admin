@@ -56,6 +56,7 @@ function createVehicleDetailsTag(vehicle, index) {
     vehicle.id
   }" data-index="${index}" />
     ${createInputField("Fahrzeugname", "name", index, vehicle.Fahrzeugname)}
+    ${createInputField("PicURL", "picurl", index, vehicle.PicURL)}
     ${createInputField("PS", "ps", index, vehicle.PS, "number")}
     ${createInputField(
       "Kilometerstand",
@@ -83,6 +84,13 @@ function createVehicleDetailsTag(vehicle, index) {
         { value: "Gebrauchtwagen", text: "Gebrauchtwagen" },
       ],
       vehicle.Zustand ? "Neuwagen" : "Gebrauchtwagen"
+    )}
+    ${createInputField(
+      "Kofferraumvolumen",
+      "kofferraumvolumen",
+      index,
+      vehicle.Kofferraumvolumen,
+      "number"
     )}
     ${createInputField("Preis", "preis", index, vehicle.Preis, "number")}
     <button type="button" class="delete-button" data-index="${index}">Löschen</button>
@@ -143,6 +151,7 @@ document
   .addEventListener("click", async function () {
     vehicles.forEach((vehicle, index) => {
       vehicle.Fahrzeugname = document.getElementById(`name-${index}`).value;
+      vehicle.PicURL = document.getElementById(`picurl-${index}`).value;
       vehicle.PS = parseInt(document.getElementById(`ps-${index}`).value, 10);
       vehicle.Kilometerstand = parseInt(
         document.getElementById(`km-${index}`).value,
@@ -152,6 +161,9 @@ document
         document.getElementById(`tuned-${index}`).value === "true";
       vehicle.Zustand =
         document.getElementById(`zustand-${index}`).value === "Neuwagen";
+      vehicle.Kofferraumvolumen = parseFloat(
+        document.getElementById(`kofferraumvolumen-${index}`).value
+      );
       vehicle.Preis = parseFloat(
         document.getElementById(`preis-${index}`).value
       );
@@ -170,6 +182,7 @@ document
     const newVehicle = {
       id: generateUniqueId(), // Einzigartige ID für jedes neue Fahrzeug
       Fahrzeugname: document.getElementById("newName").value,
+      PicURL: document.getElementById("newPicURL").value,
       PS: parseInt(document.getElementById("newPS").value, 10),
       Kilometerstand: parseInt(
         document.getElementById("newKilometerstand").value,
@@ -177,6 +190,10 @@ document
       ),
       Tuned: document.getElementById("newTuned").value === "true",
       Zustand: document.getElementById("newZustand").value === "Neuwagen",
+      Kofferraumvolumen: parseInt(
+        document.getElementById("newKofferraumvolumen").value,
+        10
+      ),
       Preis: parseFloat(document.getElementById("newPreis").value),
     };
 
