@@ -1,5 +1,5 @@
 const apiUrl = "https://api.statev.de/req";
-const apiKey = "7YC9YM41X63SG52ZDL"; // Ersetze durch deinen API-Key
+const apiKey = "xx"; // Ersetze durch deinen API-Key
 let vehicles = []; // Hier werden die Fahrzeugdaten gespeichert
 
 // Funktion zum Abrufen der Fahrzeugdaten von der API
